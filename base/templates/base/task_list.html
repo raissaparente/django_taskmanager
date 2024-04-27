@@ -4,28 +4,33 @@
 <h1>Lista de Tarefas</h1>
 <a href="{% url 'task-create' %}">Add Task</a>
 
+<!-- Add category selection dropdown -->
 <form method="GET">
-    <input type="text" name="search-area" value="{{search_input}}">
-    <input type="submit" value="Busca">
-
+    <select name="category">
+        <option value="">All Categories</option>
+        {% for category in categories %}
+            <option value="{{ category.id }}">{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    <input type="text" name="search-area" value="{{ search_input }}">
+    <input type="submit" value="Filtrar">
 </form>
 
 <table>
     <tr>
         <th>Item</th>
         <th></th>
-
     </tr>
     {% for task in tasks %}
     <tr>
-        <td>{{task.title}}</td>
+        <td>{{ task.title }}</td>
         <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
         <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
-
-
     </tr>
     {% empty %}
-    <h3> No items in list</h3>
+    <tr>
+        <td colspan="3"><h3>No items in list</h3></td>
+    </tr>
     {% endfor %}
 </table>
 

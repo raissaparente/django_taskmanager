@@ -1,12 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from .models import Task, Category
+from .forms import CategoryForm
+
 
 class TaskList(ListView):
     model = Task
+    template_name = 'task_list.html'
     context_object_name = 'tasks'
 
     def get_queryset(self):
@@ -18,14 +21,20 @@ class TaskList(ListView):
 
     def get_context_data(self,  **kwargs):
         context = super().get_context_data(**kwargs)
-        search_input = self.request.GET.get('search-area')
-        if search_input:
-            context['tasks'] = context['tasks'].filter(title__icontains=search_input)
 
-        context['search_input'] = search_input
         context['categories'] = Category.objects.all()
 
         return context
+
+def add_category(request):
+    if request.method == 'POST':
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('tasks')  # Redirect to task list page after adding category
+    else:
+        form = CategoryForm()
+    return render(request, 'base/category_form.html', {'form': form})
 
 class TaskDetail(DetailView):
     model = Task

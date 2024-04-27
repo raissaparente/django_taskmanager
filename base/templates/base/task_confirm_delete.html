@@ -1,11 +1,11 @@
 {% extends 'base/main.html' %}
 {% block content %}
 
-<a href="{% url 'tasks' %}">Go back</a>
+<a href="{% url 'tasks' %}">Voltar</a>
 
 <form method="POST">
     {% csrf_token %}
-    <p>Tem certeza que quer deletar essa tareda? "{{task}}"</p>
+    <p>Tem certeza que quer deletar essa tarefa? "{{task}}"</p>
     <input type="submit" value="Delete"/>
 </form>
 

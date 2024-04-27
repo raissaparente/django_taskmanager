@@ -2,19 +2,27 @@
 {% block content %}
 
 <h1>Lista de Tarefas</h1>
-<a href="{% url 'task-create' %}">Add Task</a>
+<a href="{% url 'task-create' %}">Nova tarefa</a>
 
-<!-- Add category selection dropdown -->
-<form method="GET">
+<a href="{% url 'add-category' %}">Nova categoria</a>
+
+<!--<form method="POST" action="{% url 'add-category' %}">-->
+<!--    {% csrf_token %}-->
+<!--    {{ category_form.as_p }}-->
+<!--    <button type="submit">Add Category</button>-->
+<!--</form>-->
+
+
+<form method="GET" action="{% url 'tasks' %}">
     <select name="category">
         <option value="">All Categories</option>
         {% for category in categories %}
             <option value="{{ category.id }}">{{ category.name }}</option>
         {% endfor %}
     </select>
-    <input type="text" name="search-area" value="{{ search_input }}">
     <input type="submit" value="Filtrar">
 </form>
+
 
 <table>
     <tr>
@@ -24,12 +32,12 @@
     {% for task in tasks %}
     <tr>
         <td>{{ task.title }}</td>
-        <td><a href="{% url 'task-update' task.id %}">Edit</a></td>
-        <td><a href="{% url 'task-delete' task.id %}">Delete</a></td>
+        <td><a href="{% url 'task-update' task.id %}">Editar</a></td>
+        <td><a href="{% url 'task-delete' task.id %}">Excluir</a></td>
     </tr>
     {% empty %}
     <tr>
-        <td colspan="3"><h3>No items in list</h3></td>
+        <td colspan="3"><h3>Não há itens na lista</h3></td>
     </tr>
     {% endfor %}
 </table>

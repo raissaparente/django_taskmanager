@@ -10,33 +10,36 @@
 
     <style>
         body {
-            background-color: #FAFAFA;
+            background-color: #B8C0AF;
             font-family: "Poppins", sans-serif;
             padding-top: 50px;
         }
 
-        h1, h2, h3, h4 {
-
-        }
 
         a, p {
-            color: #4b5156;
+            color: #909C81;
+            text-decoration: none;
+        }
 
         .container {
             max-width: 550px;
             margin: auto;
-            background-color: #FFFFFF;
+            padding: 50px;
+            background-color: #F5E2E0;
+            -webkit-box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+            box-shadow: 2px 2px 13px -4px rgba(0, 0, 0, 0.21);
+        }
 
+        input {
+            outline: none;
+            border: none;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    {% block content %}
-
-    {% endblock content %}
-
+{% block content %} {% endblock content %}
 </div>
 
 </body>

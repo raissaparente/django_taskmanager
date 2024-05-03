@@ -2,10 +2,12 @@
 {% block content %}
 
 <h1>Lista de Tarefas</h1>
-<a href="{% url 'task-create' %}">📝 Nova tarefa</a>
 
+#barra de add
+<a href="{% url 'task-create' %}">📝 Nova tarefa</a>
 <a href="{% url 'add-category' %}">🗂️ Nova categoria</a>
 
+#dropdown categorias
 <form method="GET" action="{% url 'tasks' %}">
     <select name="category">
         <option value="">All Categories</option>
@@ -16,7 +18,7 @@
     <input type="submit" value="Filtrar">
 </form>
 
-
+#lista de tarefas
 <table>
     <tr>
         <th>Item</th>

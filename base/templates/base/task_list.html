@@ -2,16 +2,9 @@
 {% block content %}
 
 <h1>Lista de Tarefas</h1>
-<a href="{% url 'task-create' %}">Nova tarefa</a>
+<a href="{% url 'task-create' %}">📝 Nova tarefa</a>
 
-<a href="{% url 'add-category' %}">Nova categoria</a>
-
-<!--<form method="POST" action="{% url 'add-category' %}">-->
-<!--    {% csrf_token %}-->
-<!--    {{ category_form.as_p }}-->
-<!--    <button type="submit">Add Category</button>-->
-<!--</form>-->
-
+<a href="{% url 'add-category' %}">🗂️ Nova categoria</a>
 
 <form method="GET" action="{% url 'tasks' %}">
     <select name="category">
@@ -32,8 +25,8 @@
     {% for task in tasks %}
     <tr>
         <td>{{ task.title }}</td>
-        <td><a href="{% url 'task-update' task.id %}">Editar</a></td>
-        <td><a href="{% url 'task-delete' task.id %}">Excluir</a></td>
+        <td><a href="{% url 'task-update' task.id %}">✏️ Editar</a></td>
+        <td><a href="{% url 'task-delete' task.id %}">🗑️ Excluir</a></td>
     </tr>
     {% empty %}
     <tr>

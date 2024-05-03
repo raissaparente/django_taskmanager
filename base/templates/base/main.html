@@ -16,9 +16,15 @@
         }
 
 
-        a, p {
+        a {
             color: #909C81;
             text-decoration: none;
+            padding: 10px;
+        }
+
+        p {
+            color: #727E63;
+            font-weight: bold;
         }
 
         .container {
@@ -34,6 +40,13 @@
             outline: none;
             border: none;
         }
+
+        footer {
+            margin: auto;
+            color: #727E63;
+            max-width: 200px;
+
+        }
     </style>
 </head>
 <body>
@@ -41,6 +54,7 @@
 <div class="container">
 {% block content %} {% endblock content %}
 </div>
+<footer>por Raissa Parente</footer>
 
 </body>
 </html>
